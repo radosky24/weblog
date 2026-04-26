@@ -1,0 +1,49 @@
+@model IEnumerable<WeblogVS2017.Models.Post>
+@{
+    ViewData["Title"] = "หน้าแรก";
+}
+
+<section class="hero">
+    <div class="container">
+        <h1 class="fade-up">ข่าวสารสำนักทะเบียน</h1>
+        <p class="fade-up" style="animation-delay: 0.2s;">ติดตามข่าวสาร ประกาศ และความเคลื่อนไหวล่าสุดจากสำนักทะเบียน เพื่อความสะดวกและรวดเร็วในการรับบริการ</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="news-grid">
+        @foreach (var post in Model)
+        {
+            <article class="news-card fade-up">
+                <div class="news-image" style="background-image: url('@(string.IsNullOrEmpty(post.ImageUrl) ? "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800" : post.ImageUrl)')">
+                    <span class="news-badge">ข่าวประกาศ</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <i class="far fa-calendar-alt"></i>
+                        @post.CreatedAt.ToString("dd MMM yyyy")
+                    </div>
+                    <h2 class="news-title">@post.Title</h2>
+                    <p class="news-excerpt">@post.Summary</p>
+                </div>
+                <div class="news-footer">
+                    <div class="author-info">
+                        <i class="fas fa-user-circle" style="color: var(--gray);"></i>
+                        <span>โดย @(post.Author?.FullName ?? "ผู้ดูแลระบบ")</span>
+                    </div>
+                    <a asp-action="Post" asp-route-id="@post.Id" class="btn-read">
+                        อ่านเพิ่มเติม <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        }
+
+        @if (!Model.Any())
+        {
+            <div style="grid-column: 1/-1; text-align: center; padding: 5rem 0;">
+                <i class="fas fa-newspaper" style="font-size: 5rem; color: #e2e8f0; margin-bottom: 2rem; display: block;"></i>
+                <p style="color: var(--gray); font-size: 1.25rem; font-weight: 600;">ยังไม่มีข่าวสารในขณะนี้</p>
+            </div>
+        }
+    </div>
+</div>

@@ -1,11 +1,12 @@
 <?php
 // config.php
-$host = 'localhost';
+$host = '127.0.0.1';
 $dbname = 'weblog';
 $username = 'root';
 $password = '';
 
 try {
+    // Check if we should use 127.0.0.1 if localhost fails (common on some Windows setups)
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

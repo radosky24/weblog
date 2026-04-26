@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ข่าวสารสำนักทะเบียน</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/modern.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a class="brand" asp-controller="Home" asp-action="Index">
+                <i class="fas fa-file-invoice"></i>
+                <span>สำนักทะเบียน</span>
+            </a>
+            <div class="nav-links">
+                <a asp-controller="Account" asp-action="Login" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: var(--transition);">เข้าสู่ระบบ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="container">
+            <a class="footer-logo" asp-controller="Home" asp-action="Index">สำนักทะเบียน</a>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-line"></i></a>
+            </div>
+            <p style="opacity: 0.5; font-size: 0.9rem;">&copy; 2026 ข่าวสารสำนักทะเบียน. สงวนลิขสิทธิ์ทั้งหมด.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
